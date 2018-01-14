@@ -4,11 +4,15 @@ import "github.com/go-martini/martini"
 import "golang.org/x/crypto/bcrypt"
 import (
   "net/http"
+  "os"
 )
 
 func main() {
   app := martini.Classic()
-  app.RunOnAddr(":3025")
+
+  sent_port := os.Args[1]
+
+  os.Setenv("PORT", sent_port)
 
   app.Post("/hash", func(w http.ResponseWriter, r *http.Request) string {
 
