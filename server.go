@@ -3,7 +3,6 @@ package main
 import "github.com/go-martini/martini"
 import "golang.org/x/crypto/bcrypt"
 import (
-  "fmt"
   "net/http"
 )
 
@@ -15,8 +14,6 @@ func main() {
 
     password := r.FormValue("password")
 
-    // fmt.Println("password:", password)
-
     pw_bytes := [] byte(password)
 
     hashed, err := bcrypt.GenerateFromPassword(pw_bytes, bcrypt.DefaultCost)
@@ -24,8 +21,6 @@ func main() {
     if err != nil {
       return "{\"error\": \"" + "something went wrong in hashing" + "\"}"
     }
-
-    // fmt.Println(string(hashed[:]))
     
     return "{\"hashed_password\": " + "\"" + string(hashed[:]) + "\"}"
   })
@@ -34,8 +29,6 @@ func main() {
 
     password := r.FormValue("password")
     hashed_pw := r.FormValue("hashed")
-
-    // fmt.Println("password:", password, "hashed_pw:", hashed_pw)
 
     pw_bytes := [] byte(password)
     hashed_bytes := [] byte(hashed_pw)
