@@ -10,9 +10,7 @@ import (
 func main() {
   app := martini.Classic()
 
-  sent_port := os.Args[1]
-
-  os.Setenv("PORT", sent_port)
+  os.Setenv("PORT", os.Getenv("GO_MICROSERVICE_PORT"))
 
   app.Post("/hash", func(w http.ResponseWriter, r *http.Request) string {
 

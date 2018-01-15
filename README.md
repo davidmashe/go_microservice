@@ -4,4 +4,3 @@ simple HTTP REST microservice for hashing passwords, and comparing passwords w/ 
 
 Coming soon:
 Unit Tests
-Docker Containerization
